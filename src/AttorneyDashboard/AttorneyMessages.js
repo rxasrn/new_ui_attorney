@@ -74,6 +74,7 @@ const SendIcon = () => (
 
 export default function AttorneyMessages({ onNavigate, profile, initialAppointmentId = '' }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activePage, setActivePage] = useState('Consultation Management');
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [appointments, setAppointments] = useState([]);
@@ -753,15 +754,18 @@ export default function AttorneyMessages({ onNavigate, profile, initialAppointme
       {/* Sidebar */}
       <aside className={`am-sidebar ${sidebarOpen ? 'am-sidebar--open' : ''}`}>
         <div className="am-sidebar__logo">
-          <ScalesIcon size={26} color="#f5a623" />
-          <span>BatasMo</span>
+          <img src="/logo/logo.jpg" alt="BatasMo logo" />
+          <div className="am-brand-text-wrap">
+            <span className="am-brand-title">BatasMo</span>
+            <span className="am-brand-sub">Attorney Console</span>
+          </div>
         </div>
         <nav className="am-sidebar__nav">
           {sidebarItems.map(item => (
             <button
               key={item.label}
-              className={`am-sidebar__item ${item.label === 'Consultation Management' ? 'am-sidebar__item--active' : ''}`}
-              onClick={() => { setSidebarOpen(false); if (item.nav) onNavigate(item.nav); }}
+              className={`am-sidebar__item ${activePage === item.label ? 'am-sidebar__item--active' : ''}`}
+              onClick={() => { setActivePage(item.label); setSidebarOpen(false); if (item.nav) onNavigate(item.nav); }}
             >
               <span className="am-sidebar__item-icon">{item.icon}</span>
               {item.label}

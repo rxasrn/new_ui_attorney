@@ -92,7 +92,7 @@
   position: absolute; top: calc(100% + 10px); right: 0;
   width: 310px; background: #1e2235;
   border: 1px solid rgba(255,255,255,.12);
-  border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,.4);
+  border-radius: 12px; box-shadow: 0 8px 32px rgba(21, 34, 56, 0.16);
   z-index: 300; overflow: hidden;
 }
 .ua-notif-panel__header {
@@ -134,7 +134,7 @@
 /* Drawer overlay */
 .ua-drawer-overlay {
   position: fixed; inset: 0;
-  background: rgba(0,0,0,.35);
+  background: rgba(21, 34, 56, 0.12);
   z-index: 200;
 }
 
@@ -183,8 +183,8 @@
 }
 
 .ua-summary__refresh {
-  background: #f5a623;
-  color: #1c1f2e;
+  background: linear-gradient(145deg, #f5a623, #e09420);
+  color: #ffffff;
   border: none;
   border-radius: 9px;
   padding: 10px 16px;
@@ -194,6 +194,7 @@
   cursor: pointer;
   min-width: 110px;
   transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 4px 12px rgba(245, 166, 35, 0.3);
 }
 
 .ua-summary__refresh:hover:not(:disabled) {

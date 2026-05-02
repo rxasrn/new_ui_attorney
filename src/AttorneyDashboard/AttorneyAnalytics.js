@@ -55,6 +55,7 @@ const ProfileIcon = () => (
 
 export default function AttorneyAnalytics({ onNavigate, profile }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activePage, setActivePage] = useState('Dashboard');
   const [rows, setRows] = useState([]);
   const [total, setTotal] = useState(0);
   const [maxCount, setMaxCount] = useState(0);
@@ -117,15 +118,19 @@ export default function AttorneyAnalytics({ onNavigate, profile }) {
 
       <aside className={`aa-sidebar ${sidebarOpen ? 'aa-sidebar--open' : ''}`}>
         <div className="aa-sidebar__logo">
-          <ScalesIcon size={26} color="#f5a623" />
-          <span>BatasMo</span>
+          <img src="/logo/logo.jpg" alt="BatasMo logo" />
+          <div className="aa-brand-text-wrap">
+            <span className="aa-brand-title">BatasMo</span>
+            <span className="aa-brand-sub">Attorney Console</span>
+          </div>
         </div>
         <nav className="aa-sidebar__nav">
           {sidebarItems.map((item) => (
             <button
               key={item.label}
-              className="aa-sidebar__item"
+              className={`aa-sidebar__item ${activePage === item.label ? 'aa-sidebar__item--active' : ''}`}
               onClick={() => {
+                setActivePage(item.label);
                 setSidebarOpen(false);
                 if (item.nav) onNavigate(item.nav);
               }}

@@ -42,7 +42,7 @@
 .announce-btn { background: linear-gradient(135deg, #f5a623 0%, #d97706 100%); color: #172554; border: none; padding: 10px 16px; border-radius: var(--ui-radius-md); font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: var(--ui-shadow-medium); transition: all 0.2s ease; }
 .announce-btn:hover { transform: translateY(-2px); box-shadow: var(--ui-shadow-strong); }
 
-.announce-modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.announce-modal-overlay { position: fixed; inset: 0; background: rgba(21, 34, 56, 0.12); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; }
 .announce-modal { width: min(740px, 100%); max-height: calc(100vh - 40px); overflow: auto; background: #fff; border: 1px solid var(--ui-glass-border); border-radius: 14px; padding: 20px; box-shadow: var(--ui-shadow-strong); }
 .announce-modal h3 { margin: 0 0 8px; color: var(--ui-text-primary); font-size: 1.15rem; }
 .announce-modal p { margin: 0 0 14px; color: var(--ui-text-secondary); font-size: 0.9rem; }

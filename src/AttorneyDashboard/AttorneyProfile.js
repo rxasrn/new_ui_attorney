@@ -64,6 +64,7 @@ const initialProfile = {
 
 export default function AttorneyProfile({ onNavigate, profile: sessionProfile, onSignOut, onProfileUpdated }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activePage, setActivePage] = useState('Profile');
   const [editing, setEditing] = useState(false);
   const [profile, setProfile] = useState(initialProfile);
   const [form, setForm] = useState(initialProfile);
@@ -159,15 +160,18 @@ export default function AttorneyProfile({ onNavigate, profile: sessionProfile, o
 
       <aside className={`ap-sidebar ${sidebarOpen ? 'ap-sidebar--open' : ''}`}>
         <div className="ap-sidebar__logo">
-          <ScalesIcon size={28} />
-          <span>BatasMo</span>
+          <img src="/logo/logo.jpg" alt="BatasMo logo" />
+          <div className="ap-brand-text-wrap">
+            <span className="ap-brand-title">BatasMo</span>
+            <span className="ap-brand-sub">Attorney Console</span>
+          </div>
         </div>
         <nav className="ap-sidebar__nav">
           {sidebarItems.map(item => (
             <button
               key={item.label}
-              className={`ap-sidebar__item ${item.label === 'Profile' ? 'ap-sidebar__item--active' : ''}`}
-              onClick={() => { setSidebarOpen(false); if (item.nav) onNavigate(item.nav); }}
+              className={`ap-sidebar__item ${activePage === item.label ? 'ap-sidebar__item--active' : ''}`}
+              onClick={() => { setActivePage(item.label); setSidebarOpen(false); if (item.nav) onNavigate(item.nav); }}
             >
               <span className="ap-sidebar__item-icon">{item.icon}</span>
               {item.label}

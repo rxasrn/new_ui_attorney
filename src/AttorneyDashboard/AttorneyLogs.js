@@ -46,6 +46,7 @@ const ProfileIcon = () => (
 
 export default function AttorneyLogs({ onNavigate, profile, initialAppointmentId = '' }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activePage, setActivePage] = useState('Logs');
   const [logs, setLogs] = useState([]);
   const [loadError, setLoadError] = useState('');
   const [activeLog, setActiveLog] = useState(null);
@@ -169,15 +170,19 @@ export default function AttorneyLogs({ onNavigate, profile, initialAppointmentId
 
       <aside className={`al-sidebar ${sidebarOpen ? 'al-sidebar--open' : ''}`}>
         <div className="al-sidebar__logo">
-          <ScalesIcon size={26} color="#f5a623" />
-          <span>BatasMo</span>
+          <img src="/logo/logo.jpg" alt="BatasMo logo" />
+          <div className="al-brand-text-wrap">
+            <span className="al-brand-title">BatasMo</span>
+            <span className="al-brand-sub">Attorney Console</span>
+          </div>
         </div>
         <nav className="al-sidebar__nav">
           {sidebarItems.map((item) => (
             <button
               key={item.label}
-              className={`al-sidebar__item ${item.label === 'Logs' ? 'al-sidebar__item--active' : ''}`}
+              className={`al-sidebar__item ${activePage === item.label ? 'al-sidebar__item--active' : ''}`}
               onClick={() => {
+                setActivePage(item.label);
                 setSidebarOpen(false);
                 if (item.nav) onNavigate(item.nav);
               }}

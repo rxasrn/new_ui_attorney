@@ -74,6 +74,7 @@ const ProfileIcon = () => (
 function NotarialRequestsAtty({ onNavigate, profile }) {
   const [requests, setRequests] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activePage, setActivePage] = useState('Consultation Management');
   const [loadError, setLoadError] = useState('');
 
   /* Modal state */
@@ -162,8 +163,11 @@ function NotarialRequestsAtty({ onNavigate, profile }) {
       {/* Sidebar */}
       <aside className={`nra-sidebar ${sidebarOpen ? 'nra-sidebar--open' : ''}`}>
         <div className="nra-sidebar__logo">
-          <ScalesIcon size={26} color="#f5a623" />
-          <span>BatasMo</span>
+          <img src="/logo/logo.jpg" alt="BatasMo logo" />
+          <div className="nra-brand-text-wrap">
+            <span className="nra-brand-title">BatasMo</span>
+            <span className="nra-brand-sub">Attorney Console</span>
+          </div>
         </div>
         <nav className="nra-sidebar__nav">
           {[
@@ -175,8 +179,9 @@ function NotarialRequestsAtty({ onNavigate, profile }) {
           ].map(item => (
             <button
               key={item.label}
-              className={`nra-sidebar__item ${item.label === 'Consultation Management' ? 'nra-sidebar__item--active' : ''}`}
+              className={`nra-sidebar__item ${activePage === item.label ? 'nra-sidebar__item--active' : ''}`}
               onClick={() => {
+                setActivePage(item.label);
                 setSidebarOpen(false);
                 if (item.nav) onNavigate(item.nav);
               }}

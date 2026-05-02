@@ -93,6 +93,7 @@ function ConsultationRequests({ onNavigate, profile }) {
   const [requests, setRequests] = useState([]);
   const [notifications, setNotifications] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activePage, setActivePage] = useState('Consultation Management');
   const [notifOpen, setNotifOpen] = useState(false);
   const [loadError, setLoadError] = useState('');
 
@@ -198,8 +199,11 @@ function ConsultationRequests({ onNavigate, profile }) {
       {/* Sidebar */}
       <aside className={`cr-sidebar ${sidebarOpen ? 'cr-sidebar--open' : ''}`}>
         <div className="cr-sidebar__logo">
-          <ScalesIcon size={26} color="#f5a623" />
-          <span>BatasMo</span>
+          <img src="/logo/logo.jpg" alt="BatasMo logo" />
+          <div className="cr-brand-text-wrap">
+            <span className="cr-brand-title">BatasMo</span>
+            <span className="cr-brand-sub">Attorney Console</span>
+          </div>
         </div>
         <nav className="cr-sidebar__nav">
           {[
@@ -211,8 +215,9 @@ function ConsultationRequests({ onNavigate, profile }) {
           ].map(item => (
             <button
               key={item.label}
-              className={`cr-sidebar__item sidebar-item ${item.label === 'Consultation Management' ? 'cr-sidebar__item--active' : ''}`}
+              className={`cr-sidebar__item ${activePage === item.label ? 'cr-sidebar__item--active' : ''}`}
               onClick={() => {
+                setActivePage(item.label);
                 setSidebarOpen(false);
                 if (item.nav) onNavigate(item.nav);
               }}

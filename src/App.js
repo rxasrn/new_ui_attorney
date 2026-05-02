@@ -36,6 +36,33 @@ const Announcements = lazy(() => import('./ClientDashboard/Announcements'));
 const TransactionHistory = lazy(() => import('./ClientDashboard/TransactionHistory'));
 const ClientLogs = lazy(() => import('./ClientDashboard/ClientLogs'));
 
+const preloadClientPages = () =>
+  Promise.all([
+    import('./ClientDashboard/HomePage'),
+    import('./ClientDashboard/BookAppointment'),
+    import('./ClientDashboard/NotarialRequest'),
+    import('./ClientDashboard/MyAppointments'),
+    import('./ClientDashboard/ProfilePage'),
+    import('./ClientDashboard/ChatRoom'),
+    import('./ClientDashboard/MyNotarialRequests'),
+    import('./ClientDashboard/Announcements'),
+    import('./ClientDashboard/TransactionHistory'),
+    import('./ClientDashboard/ClientLogs'),
+  ]);
+
+const preloadAttorneyPages = () =>
+  Promise.all([
+    import('./AttorneyDashboard/AttorneyHome'),
+    import('./AttorneyDashboard/ConsultationRequests'),
+    import('./AttorneyDashboard/UpcomingAppointments'),
+    import('./AttorneyDashboard/NotarialRequestsAtty'),
+    import('./AttorneyDashboard/AttorneyAnalytics'),
+    import('./AttorneyDashboard/AttorneyMessages'),
+    import('./AttorneyDashboard/AttorneyLogs'),
+    import('./AttorneyDashboard/AttorneyAnnouncements'),
+    import('./AttorneyDashboard/AttorneyProfile'),
+  ]);
+
 const AttorneyHome = lazy(() => import('./AttorneyDashboard/AttorneyHome'));
 const ConsultationRequests = lazy(() => import('./AttorneyDashboard/ConsultationRequests'));
 const UpcomingAppointments = lazy(() => import('./AttorneyDashboard/UpcomingAppointments'));
@@ -516,7 +543,10 @@ function App() {
       setShowNotaryModal(true)
       return
     }
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    // Smooth scroll to top using requestAnimationFrame
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    })
     setPageParams(params || {})
     setPage(nextPage)
   }, [currentProfile?.role])
@@ -547,7 +577,16 @@ function App() {
     : 'anonymous'
 
   const renderLazy = (node) => (
-    <Suspense fallback={null}>
+    <Suspense 
+      fallback={
+        <div className="client-shell-page-fallback" 
+             key="fallback"
+             role="status" 
+             aria-live="polite"
+             aria-label="Loading page content"
+        />
+      }
+    >
       <PageLifecycleTrace
         key={`${page}:${profileScopeKey}:v${authScopeVersion}`}
         page={page}
@@ -609,6 +648,31 @@ function App() {
     }
     return undefined
   }, [currentProfile, page, isPublicPage])
+
+  useEffect(() => {
+    const role = normalizeRole(currentProfile?.role || '')
+    if (role !== 'Client' && role !== 'Attorney') return undefined
+
+    let cancelled = false
+    const warmChunks = async () => {
+      try {
+        if (role === 'Client') {
+          await preloadClientPages()
+        } else if (role === 'Attorney') {
+          await preloadAttorneyPages()
+        }
+      } catch (error) {
+        if (!cancelled && IS_DEV) {
+          console.warn('[nav] chunk preload skipped', error)
+        }
+      }
+    }
+
+    warmChunks()
+    return () => {
+      cancelled = true
+    }
+  }, [currentProfile?.role])
 
   if (!authLoading && !isPublicPage && !currentProfile) {
     return <Login onNavigate={handleNavigate} onAuthSuccess={handleAuthSuccess} />;

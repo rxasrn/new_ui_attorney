@@ -193,6 +193,7 @@ function UpcomingAppointments({ onNavigate, profile }) {
   const [appointments, setAppointments] = useState([]);
   const [reschedAppt, setReschedAppt] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [activePage, setActivePage] = useState('Consultation Management');
   const [notifOpen, setNotifOpen] = useState(false);
   const [notifications] = useState(DEFAULT_NOTIFICATIONS);
   const [loadError, setLoadError] = useState('');
@@ -416,8 +417,11 @@ function UpcomingAppointments({ onNavigate, profile }) {
       {/* Sidebar */}
       <aside className={`ua-sidebar ${drawerOpen ? 'ua-sidebar--open' : ''}`}>
         <div className="ua-sidebar__logo">
-          <ScalesIcon size={26} color="#f5a623" />
-          <span>BatasMo</span>
+          <img src="/logo/logo.jpg" alt="BatasMo logo" />
+          <div className="ua-brand-text-wrap">
+            <span className="ua-brand-title">BatasMo</span>
+            <span className="ua-brand-sub">Attorney Console</span>
+          </div>
         </div>
         <nav className="ua-sidebar__nav">
           {[
@@ -429,8 +433,9 @@ function UpcomingAppointments({ onNavigate, profile }) {
           ].map(item => (
             <button
               key={item.label}
-              className={`ua-sidebar__item ${item.label === 'Consultation Management' ? 'ua-sidebar__item--active' : ''}`}
+              className={`ua-sidebar__item ${activePage === item.label ? 'ua-sidebar__item--active' : ''}`}
               onClick={() => {
+                setActivePage(item.label);
                 setDrawerOpen(false);
                 if (item.nav) onNavigate(item.nav);
               }}
