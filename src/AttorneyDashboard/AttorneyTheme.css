@@ -2826,3 +2826,433 @@ a.btn:active,
   background: linear-gradient(90deg, rgba(14, 165, 233, 0.05), rgba(139, 92, 246, 0.05));
   transform: translateX(2px);
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   PERSISTENT SIDEBAR ON DESKTOP (≥1120px)
+   Force sidebar visible across ALL attorney pages on larger screens.
+   Adjusts topbar and main content to accommodate sidebar width.
+   ═══════════════════════════════════════════════════════════════════ */
+@media (min-width: 1120px) {
+  /* Force ALL attorney sidebars visible at all times */
+  .att-sidebar,
+  .cr-sidebar,
+  .am-sidebar,
+  .ap-sidebar,
+  .ma-sidebar,
+  .ua-sidebar,
+  .nra-sidebar,
+  .ae-sidebar,
+  .aa-sidebar,
+  .al-sidebar {
+    transform: translateX(0) !important;
+    position: fixed !important;
+    top: 16px !important;
+    left: 16px !important;
+    bottom: 16px !important;
+    width: 260px !important;
+    height: auto !important;
+    border-radius: 20px !important;
+    z-index: 220 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Hide the overlay since sidebar is always visible */
+  .att-sidebar-overlay,
+  .cr-sidebar-overlay,
+  .am-sidebar-overlay,
+  .ap-sidebar-overlay,
+  .ma-sidebar-overlay,
+  .ua-sidebar-overlay,
+  .ua-drawer-overlay,
+  .nra-sidebar-overlay,
+  .ae-sidebar-overlay,
+  .aa-sidebar-overlay,
+  .al-sidebar-overlay {
+    display: none !important;
+  }
+
+  /* Hide the hamburger menu button on desktop */
+  .att-menu-btn,
+  .att-icon-btn.att-menu-btn,
+  .cr-back-btn,
+  .am-menu-btn,
+  .ap-menu-btn,
+  .ma-menu-btn,
+  .ua-menu-btn,
+  .nra-menu-btn,
+  .ae-menu-btn,
+  .aa-menu-btn,
+  .al-menu-btn {
+    display: none !important;
+  }
+
+  /* Topbar is now hidden/floating - no need to shift it */
+
+  /* Shift main content to account for the sidebar */
+  .att-main,
+  .cr-main,
+  .am-chat-container,
+  .ap-main,
+  .ma-main,
+  .ua-main,
+  .nra-main,
+  .ae-main,
+  .aa-main,
+  .al-main {
+    margin-left: 300px !important;
+    width: calc(100% - 320px) !important;
+  }
+}
+
+/* Mobile: sidebar stays hidden by default, toggled via hamburger */
+@media (max-width: 1119px) {
+  .att-sidebar,
+  .cr-sidebar,
+  .am-sidebar,
+  .ap-sidebar,
+  .ma-sidebar,
+  .ua-sidebar,
+  .nra-sidebar,
+  .ae-sidebar,
+  .aa-sidebar,
+  .al-sidebar {
+    transform: translateX(-110%) !important;
+    transition: transform 0.28s ease !important;
+  }
+
+  .att-sidebar--open,
+  .cr-sidebar--open,
+  .am-sidebar--open,
+  .ap-sidebar--open,
+  .ma-sidebar--open,
+  .ua-sidebar--open,
+  .nra-sidebar--open,
+  .ae-sidebar--open,
+  .aa-sidebar--open,
+  .al-sidebar--open {
+    transform: translateX(0) !important;
+  }
+
+  .att-main,
+  .cr-main,
+  .am-chat-container,
+  .ap-main,
+  .ma-main,
+  .ua-main,
+  .nra-main,
+  .ae-main,
+  .aa-main,
+  .al-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  /* Topbar is now hidden/floating - no need to shift it */
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   REMOVE BORDERS AROUND TEXT & CARDS - ACROSS ALL ATTORNEY PAGES
+   Removes outlines, borders, and box-shadows from text-containing
+   elements. Buttons and interactive controls are excluded.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Remove borders from ALL card containers */
+.att-welcome,
+.att-stat-card,
+.att-queue-card,
+.att-queue-item,
+.att-spotlight-card,
+.cr-card,
+.cr-card__concern,
+.ua-card,
+.ua-summary,
+.ua-section,
+.ua-empty-state,
+.ap-profile-card,
+.ap-details-card,
+.ap-detail,
+.ap-stat,
+.ap-field,
+.am-chat-container,
+.am-chat-header,
+.am-input-bar,
+.nra-card,
+.nra-header,
+.aa-summary-card,
+.aa-chart-card,
+.aa-card,
+.ae-summary-card,
+.ae-table-card,
+.al-item,
+.al-empty,
+.al-header {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Remove border from summary grid cards in analytics */
+.aa-summary-card,
+.aa-chart-card,
+.aa-chart-card--gender {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Remove border from queue items */
+.att-queue-item,
+.att-queue-empty {
+  border: none !important;
+}
+
+/* Remove border from hero chips but keep subtle shadow for visual grouping */
+.att-hero-chip {
+  border: none !important;
+}
+
+/* Remove borders from date blocks */
+.att-queue-item__date-block {
+  border: none !important;
+}
+
+/* Remove borders from badges - keep their background only */
+.att-badge,
+.att-badge--pending,
+.att-badge--confirmed,
+.att-badge--approved,
+.att-badge--cancelled,
+.att-badge--rejected,
+.cr-status,
+.nra-status {
+  border: none !important;
+}
+
+/* Remove topbar bottom border */
+.att-topbar,
+.cr-topbar,
+.am-topbar,
+.ap-topbar,
+.ma-topbar,
+.ua-topbar,
+.nra-topbar,
+.ae-topbar,
+.aa-topbar,
+.al-topbar {
+  border-bottom: none !important;
+}
+
+/* Remove sidebar border-right and logo border-bottom */
+.att-sidebar,
+.cr-sidebar,
+.am-sidebar,
+.ap-sidebar,
+.ma-sidebar,
+.ua-sidebar,
+.nra-sidebar,
+.ae-sidebar,
+.aa-sidebar,
+.al-sidebar {
+  border-right: none !important;
+}
+
+.att-sidebar__logo,
+.cr-sidebar__logo,
+.am-sidebar__logo,
+.ap-sidebar__logo,
+.ma-sidebar__logo,
+.ua-sidebar__logo,
+.nra-sidebar__logo,
+.ae-sidebar__logo,
+.aa-sidebar__logo,
+.al-sidebar__logo {
+  border-bottom: none !important;
+}
+
+/* Remove borders from profile card sections */
+.ap-profile-card__banner,
+.ap-profile-card__body,
+.ap-stats,
+.ap-detail-grid {
+  border: none !important;
+}
+
+/* Remove borders from notarial card meta rows */
+.nra-card__meta,
+.nra-card__info,
+.nra-card__title-row {
+  border: none !important;
+}
+
+/* Remove borders from announcement cards */
+.aa-card__top,
+.aa-card__footer,
+.aa-card__body {
+  border: none !important;
+}
+
+/* Remove borders from consultation request card sections */
+.cr-card__top,
+.cr-card__info,
+.cr-card__meta {
+  border: none !important;
+}
+
+/* Remove borders from log items */
+.al-item__meta {
+  border: none !important;
+}
+
+/* Remove borders from upcoming appointment sections */
+.ua-section__header,
+.ua-card__top,
+.ua-card__bottom {
+  border: none !important;
+}
+
+/* Glassmorphism card override: remove border from the broad card selector */
+.att-page [class*="card"],
+.cr-page [class*="card"],
+.am-page [class*="card"],
+.ap-page [class*="card"],
+.ma-page [class*="card"],
+.ua-page [class*="card"],
+.nra-page [class*="card"],
+.ae-page [class*="card"],
+.aa-page [class*="card"],
+.al-page [class*="card"] {
+  border: none !important;
+}
+
+/* Keep subtle shadow on cards for depth without borders */
+.att-stat-card,
+.att-queue-card,
+.att-welcome,
+.cr-card,
+.ua-card,
+.ua-summary,
+.ap-profile-card,
+.ap-details-card,
+.nra-card,
+.aa-card,
+.aa-summary-card,
+.aa-chart-card,
+.al-item,
+.am-chat-container {
+  box-shadow: 0 8px 28px rgba(15, 28, 46, 0.07) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HIDE TOPBAR / NAVBAR ACROSS ALL ATTORNEY PAGES
+   Keep notification button + attorney user profile visible.
+   The right side floats as a fixed element in the top-right corner.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Make the topbar invisible: no background, no border, no shadow, no height */
+.att-topbar,
+.cr-topbar,
+.am-topbar,
+.ap-topbar,
+.ma-topbar,
+.ua-topbar,
+.nra-topbar,
+.ae-topbar,
+.aa-topbar,
+.al-topbar {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  backdrop-filter: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 12px 20px !important;
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+  width: auto !important;
+  margin-left: 0 !important;
+  z-index: 210 !important;
+  pointer-events: none;
+}
+
+/* Allow clicks on the right side controls + glass background pill */
+.att-topbar__right,
+.cr-topbar__right,
+.am-topbar__right,
+.ap-topbar__right,
+.ma-topbar__right,
+.ua-topbar__right,
+.nra-topbar__right,
+.ae-topbar__right,
+.aa-topbar__right,
+.al-topbar__right {
+  pointer-events: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background: rgba(246, 241, 232, 0.92) !important;
+  backdrop-filter: blur(12px) !important;
+  padding: 8px 18px !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 16px rgba(15, 28, 46, 0.08) !important;
+}
+
+/* Hide the left side of topbar (logo, title text, hamburger) */
+.att-topbar__left,
+.cr-topbar__left,
+.am-topbar__left,
+.ap-topbar__left,
+.ma-topbar__left,
+.ua-topbar__left,
+.nra-topbar__left,
+.ae-topbar__left,
+.aa-topbar__left,
+.al-topbar__left {
+  display: none !important;
+}
+
+/* Ensure notification buttons remain visible and clickable */
+.att-notif-btn,
+.cr-notif-btn,
+.cr-icon-btn.cr-notif-btn,
+.am-notif-btn,
+.ap-notif-btn,
+.ua-notif-btn,
+.ua-icon-btn.ua-notif-btn,
+.nra-notif-btn,
+.ae-notif-btn,
+.aa-notif-btn,
+.al-notif-btn {
+  pointer-events: auto !important;
+  display: flex !important;
+}
+
+/* Ensure profile/user sections remain visible */
+.att-profile,
+.cr-profile,
+.am-topbar__user,
+.am-topbar__avatar,
+.ap-profile,
+.ua-profile,
+.nra-profile,
+.aa-profile,
+.al-topbar__user-name,
+.al-topbar__avatar,
+.aa-topbar__user-name,
+.aa-topbar__avatar {
+  pointer-events: auto !important;
+}
+
+/* Add enough top padding so floating notification/profile don't overlap content */
+.att-main,
+.cr-main,
+.am-chat-container,
+.ap-main,
+.ma-main,
+.ua-main,
+.nra-main,
+.ae-main,
+.aa-main,
+.al-main {
+  padding-top: 72px !important;
+}
