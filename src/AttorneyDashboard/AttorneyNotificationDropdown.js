@@ -103,12 +103,29 @@ export default function AttorneyNotificationDropdown({
             <button
               type="button"
               className="atty-notif-panel__mark-read"
+              style={{
+                color: '#152238',
+                border: 'none',
+                boxShadow: 'none',
+                outline: 'none',
+              }}
               onClick={onMarkAllRead}
               disabled={!hasUnread || isMarkingAllRead}
             >
               {isMarkingAllRead ? 'Marking...' : 'Mark all as read'}
             </button>
-            <button type="button" className="atty-notif-panel__close" onClick={onClose}>
+            <button
+              type="button"
+              className="atty-notif-panel__close"
+              style={{
+                color: '#152238',
+                border: 'none',
+                boxShadow: 'none',
+                outline: 'none',
+                background: 'transparent',
+              }}
+              onClick={onClose}
+            >
               ✕
             </button>
           </div>

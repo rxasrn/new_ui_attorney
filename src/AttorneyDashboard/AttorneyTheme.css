@@ -1,46 +1,156 @@
 /* ═══════════════════════════════════════════════════════════════════
-   ATTORNEY DASHBOARD - LIGHT THEME (CLIENT-INSPIRED PALETTE)
+   ATTORNEY DASHBOARD - ELEGANT PROFESSIONAL THEME
+   Cream, Navy, & Gold - Premium Legal UI
    ═══════════════════════════════════════════════════════════════════ */
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
 /* ─────────────────────────────────────────────────────────────────
-   LIGHT THEME CUSTOM PROPERTIES
+   ELEGANT COLOR SCHEME & DESIGN TOKENS (Matching ClientDashboard)
    ───────────────────────────────────────────────────────────────── */
 :root {
-  /* Background Colors - Light Palette */
-  --ui-bg-dark: #f5f1eb;
-  --ui-bg-darker: #ece6de;
-  --ui-bg-card: rgba(255, 255, 255, 0.96);
-  --ui-bg-card-hover: rgba(255, 255, 255, 1);
+  /* BACKGROUND COLORS - Cream/Beige palette */
+  --bg-primary: #F5F1EB;
+  --bg-secondary: #ECE6DE;
+  --bg-dark: #F5F1EB;
+  --bg-darker: #ECE6DE;
+  --bg-charcoal: #ECE6DE;
+  --bg-card: rgba(255, 255, 255, 0.96);
+  --bg-card-hover: rgba(255, 255, 255, 1);
 
-  /* Text Colors */
-  --ui-text-primary: #0b0f19;
-  --ui-text-secondary: #4b5563;
-  --ui-text-muted: #6b7280;
+  /* ACCENT COLORS - Dark navy */
+  --accent-primary: #152238;
+  --accent-hover: #1e2d45;
+  --accent-light: #2a3a55;
+  --accent-dark: #0B0F19;
 
-  /* Accent Colors */
-  --ui-accent: #152238;
-  --ui-accent-hover: #1e2d45;
+  /* TEXT COLORS */
+  --text-primary: #0B0F19;
+  --text-secondary: #4B5563;
+  --text-tertiary: #6B7280;
+  --text-muted: #6B7280;
+  --text-light: #F5F5F5;
+  --text-light-secondary: #E8E8E8;
 
-  /* Border Colors */
-  --ui-border: #d1d5db;
-  --ui-glass-border: rgba(21, 34, 56, 0.15);
+  /* BORDER & UI COLORS */
+  --border-light: #D1D5DB;
+  --border-divider: #D1D5DB;
+  --glass-border: rgba(21, 34, 56, 0.15);
+  --input-bg: rgba(255, 255, 255, 0.96);
 
-  /* Shadows */
-  --ui-shadow-sm: 0 2px 4px rgba(21, 34, 56, 0.05);
-  --ui-shadow-md: 0 4px 12px rgba(21, 34, 56, 0.08);
-  --ui-shadow-lg: 0 8px 24px rgba(21, 34, 56, 0.12);
-  --ui-shadow-xl: 0 16px 48px rgba(21, 34, 56, 0.15);
+  /* GRADIENTS */
+  --gradient-primary: linear-gradient(135deg, #152238 0%, #1e2d45 100%);
+  --gradient-secondary: linear-gradient(135deg, #ECE6DE 0%, #F5F1EB 100%);
 
-  /* Transitions */
-  --ui-transition-fast: 0.15s ease;
-  --ui-transition-normal: 0.25s ease;
-  --ui-transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* SHADOWS */
+  --shadow-sm: 0 2px 4px rgba(21, 34, 56, 0.05);
+  --shadow-md: 0 4px 12px rgba(21, 34, 56, 0.08);
+  --shadow-lg: 0 8px 24px rgba(21, 34, 56, 0.12);
+  --shadow-xl: 0 16px 48px rgba(21, 34, 56, 0.15);
+
+  /* TRANSITIONS & ANIMATIONS */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* LEGACY COMPATIBILITY (mapping to new scheme) */
+  --cream-primary: #F5F1EB;
+  --cream-beige: #ECE6DE;
+  --cream-sand: #ECE6DE;
+  --cream-light: #FAF7F2;
+  --navy-dark: #152238;
+  --navy-darker: #0B0F19;
+  --navy-muted: #1e2d45;
+  --gold-primary: #152238;
+  --gold-soft: #1e2d45;
+  --gold-light: #2a3a55;
+
+  /* UI helper variables */
+  --ui-accent: var(--accent-primary);
+  --ui-accent-hover: var(--accent-hover);
+  --ui-bg-card: var(--bg-card);
+  --ui-border: var(--border-light);
+  --ui-text-primary: var(--text-primary);
+  --ui-text-muted: var(--text-secondary);
+  --ui-shadow-md: var(--shadow-md);
+  --ui-shadow-lg: var(--shadow-lg);
+  --ui-transition-normal: var(--transition-normal);
 }
 
 /* ─────────────────────────────────────────────────────────────────
-   GLOBAL PAGE BACKGROUNDS
+   UI MOTION & EFFECTS (Global, non-invasive)
+   - Subtle page load fades, card rise, hover lifts, and gentle float for avatars
+   - Lightweight CSS-only animations; does not change markup or backend
+   ───────────────────────────────────────────────────────────────── */
+
+/* micro-motion variables */
+:root {
+  --motion-page-duration: 0.48s;
+  --motion-card-duration: 0.42s;
+  --motion-ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+@keyframes ui-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ui-card-rise {
+  from { opacity: 0; transform: translateY(10px) scale(.995); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes ui-float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
+
+/* page entrance */
+.att-page, .ap-page, .am-page, .cr-page, .ma-page, .ua-page, .nra-page, .ae-page, .aa-page, .al-page {
+  animation: ui-fade-up var(--motion-page-duration) var(--motion-ease) both;
+}
+
+/* card entrance/hover */
+.ap-profile-card, .ap-details-card--editing, .ap-profile-card__body, .att-card, .cr-card, .am-card, .ma-card {
+  will-change: transform, opacity;
+  animation: ui-card-rise var(--motion-card-duration) var(--motion-ease) both;
+  transition: transform var(--ui-transition-normal), box-shadow var(--ui-transition-normal);
+}
+
+.ap-profile-card:hover, .ap-details-card--editing:hover, .att-card:hover, .cr-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 28px 70px rgba(21,34,56,0.14);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes att-card-pop { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  .att-card, .ah-card, .ap-profile-card, .ap-details-card--editing { animation: att-card-pop 0.56s cubic-bezier(.2,.9,.3,1) both; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .att-card, .ah-card, .ap-profile-card, .ap-details-card--editing { animation: none !important; }
+}
+
+/* subtle float for avatars/initials */
+.ap-profile-card__avatar, .ap-profile-card__avatar img, .att-avatar, .am-avatar {
+  animation: ui-float 6s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+/* micro interaction helpers (no color changes) */
+.att-page button, .ap-page button, .am-page button {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+}
+
+/* accessible focus ring */
+.att-page :focus-visible, .ap-page :focus-visible {
+  outline: 3px solid rgba(200,169,106,0.14);
+  outline-offset: 3px;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   GLOBAL PAGE STYLING (Cream background)
    ───────────────────────────────────────────────────────────────── */
 .att-page,
 .cr-page,
@@ -53,18 +163,217 @@
 .aa-page,
 .al-page {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 35%),
-    radial-gradient(circle at 100% 0%, rgba(139, 69, 19, 0.06) 0%, transparent 30%),
-    radial-gradient(circle at 100% 100%, rgba(212, 175, 55, 0.08) 0%, transparent 35%),
-    radial-gradient(circle at 0% 100%, rgba(26, 45, 74, 0.04) 0%, transparent 30%),
-    linear-gradient(135deg, #faf6f1 0%, #f5ede3 25%, #f0e6d8 50%, #f8f4ef 75%, #fdfcfa 100%) !important;
-  color: var(--ui-text-primary) !important;
-  font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(160deg, rgba(245, 234, 214, 0.82) 0%, rgba(255, 249, 240, 0.74) 52%, rgba(255, 255, 255, 0.9) 100%), #F5F1EB;
+  color: var(--text-primary);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+
+.ap-page .ap-edit-hero h2 {
+  color: #ffffff !important;
+}
+  position: relative;
+}
+
+.att-page::before,
+.cr-page::before,
+.am-page::before,
+.ap-page::before,
+.ma-page::before,
+.ua-page::before,
+.nra-page::before,
+.ae-page::before,
+.aa-page::before,
+.al-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 10% 20%, rgba(26, 45, 74, 0.03) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(26, 45, 74, 0.04) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* ─────────────────────────────────────────────────────────────────
-   TYPOGRAPHY
+   LUXURY POLISH - Hover effects, glass topbar, nav glow, inputs
+   - Subtle sheen, animated underline for links, input focus glow
+   - Respects prefers-reduced-motion for accessibility
+   ───────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* topbar: soft glass with moving sheen */
+  .att-topbar {
+    background: linear-gradient(180deg, rgba(255,255,255,0.66), rgba(249,245,239,0.6));
+    backdrop-filter: blur(6px) saturate(110%);
+    box-shadow: 0 6px 20px rgba(15,28,46,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  /* nav items: gentle glow and slide */
+  .ap-sidebar__item {
+    transition: color 200ms ease, transform 220ms var(--motion-ease), box-shadow 220ms ease;
+  }
+
+  .ap-sidebar__item--active, .ap-sidebar__item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 8px 22px rgba(21,34,56,0.06);
+  }
+
+  /* primary buttons: sheen pseudo-element (no color change) */
+  .ap-edit-btn, .ap-btn--save, .ap-btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ap-edit-btn::after, .ap-btn--save::after, .ap-btn::after {
+    content: '';
+    position: absolute;
+    left: -60%;
+    top: -20%;
+    width: 40%;
+    height: 140%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02));
+    transform: skewX(-18deg) translateX(0);
+    transition: transform 700ms ease, opacity 300ms ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .ap-edit-btn:hover::after, .ap-btn--save:hover::after, .ap-btn:hover::after {
+    transform: translateX(220%);
+    opacity: 1;
+  }
+
+/* Late override: ensure critical Save and Edit heading text stays white across attorney pages */
+.ap-page .ap-btn--save, .ap-page .ap-edit-btn, .ap-page button.ap-btn--save {
+  color: #ffffff !important;
+}
+.ap-page .ap-edit-hero h2, .ap-page .ap-edit-hero h1 {
+  color: #ffffff !important;
+}
+
+/* Ensure any summary 'Refresh' buttons keep white text across pages */
+.ua-page .ua-summary__refresh,
+.att-page .ua-summary__refresh,
+.ma-summary__refresh,
+.client-shell-body .ma-summary__refresh,
+.ap-page .ma-summary__refresh,
+[class$="summary__refresh"] {
+  color: #ffffff !important;
+  text-shadow: 0 1px 0 rgba(15,28,46,0.12) !important;
+}
+
+/* Slight global refinement: stronger link underline and smoother text rendering */
+a { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* Remove text-only outlines/lines across attorney pages */
+.att-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a),
+.cr-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a),
+.am-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a),
+.ap-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a),
+.ma-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a),
+.ua-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a),
+.nra-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a),
+.ae-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a),
+.aa-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a),
+.al-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a) {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  text-decoration-thickness: auto;
+  text-underline-offset: 0.12em;
+}
+
+.att-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::before,
+.cr-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::before,
+.am-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::before,
+.ap-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::before,
+.ma-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::before,
+.ua-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::before,
+.nra-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::before,
+.ae-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::before,
+.aa-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::before,
+.al-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::before,
+.att-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::after,
+.cr-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::after,
+.am-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::after,
+.ap-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::after,
+.ma-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::after,
+.ua-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::after,
+.nra-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::after,
+.ae-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::after,
+.aa-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::after,
+.al-page :where(h1, h2, h3, h4, h5, h6, p, span, label, small, strong, em, time, a)::after {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Notification panel button text must remain visible */
+.atty-notif-panel .atty-notif-panel__mark-read,
+.atty-notif-panel .atty-notif-panel__close,
+.atty-notif-panel button {
+  color: #152238 !important;
+}
+
+.atty-notif-panel .atty-notif-panel__mark-read {
+  background: linear-gradient(135deg, #F5F1EB, #FFFDFB) !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.atty-notif-panel .atty-notif-panel__mark-read:hover:not(:disabled) {
+  color: #0B0F19 !important;
+  background: linear-gradient(135deg, #FFFDFB, #F5F1EB) !important;
+}
+
+.atty-notif-panel .atty-notif-panel__close {
+  border: none !important;
+  background: rgba(245, 241, 235, 0.85) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+
+  /* link underline animation */
+  a {
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    transition: color 160ms ease;
+  }
+
+  a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, rgba(200,169,106,0.95), rgba(214,184,124,0.8));
+    transition: width 260ms var(--motion-ease);
+  }
+
+  a:hover::after { width: 100%; }
+
+  /* inputs: soft focus glow */
+  input:focus, textarea:focus, .input:focus, .select:focus {
+    box-shadow: 0 6px 18px rgba(30,45,69,0.08), 0 0 0 4px rgba(200,169,106,0.06);
+    border-color: rgba(200,169,106,0.32);
+  }
+}
+
+/* Reduced motion: disable animations and heavy transitions */
+@media (prefers-reduced-motion: reduce) {
+  .ap-profile-card, .att-page, .ap-page { animation: none !important; transition: none !important; }
+  .ap-profile-card__avatar { animation: none !important; }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   TYPOGRAPHY - MODERN HEADINGS
    ───────────────────────────────────────────────────────────────── */
 .att-page h1,
 .att-page h2,
@@ -81,29 +390,71 @@
 .am-page h1,
 .am-page h2,
 .am-page h3,
+.am-page h4,
+.am-page h5,
+.am-page h6,
 .ap-page h1,
 .ap-page h2,
 .ap-page h3,
+.ap-page h4,
+.ap-page h5,
+.ap-page h6,
 .ma-page h1,
 .ma-page h2,
 .ma-page h3,
+.ma-page h4,
+.ma-page h5,
+.ma-page h6,
 .ua-page h1,
 .ua-page h2,
 .ua-page h3,
+.ua-page h4,
+.ua-page h5,
+.ua-page h6,
 .nra-page h1,
 .nra-page h2,
 .nra-page h3,
+.nra-page h4,
+.nra-page h5,
+.nra-page h6,
 .ae-page h1,
 .ae-page h2,
 .ae-page h3,
+.ae-page h4,
+.ae-page h5,
+.ae-page h6,
 .aa-page h1,
 .aa-page h2,
 .aa-page h3,
+.aa-page h4,
+.aa-page h5,
+.aa-page h6,
 .al-page h1,
 .al-page h2,
-.al-page h3 {
-  color: var(--ui-text-primary) !important;
+.al-page h3,
+.al-page h4,
+.al-page h5,
+.al-page h6 {
+  color: var(--text-primary) !important;
   font-family: "Poppins", "Space Grotesk", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  transition: color var(--transition-normal);
+}
+
+.att-page h1, .cr-page h1, .am-page h1, .ap-page h1, .ma-page h1, .ua-page h1, .nra-page h1, .ae-page h1, .aa-page h1, .al-page h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+}
+
+.att-page h2, .cr-page h2, .am-page h2, .ap-page h2, .ma-page h2, .ua-page h2, .nra-page h2, .ae-page h2, .aa-page h2, .al-page h2 {
+  font-size: 1.875rem;
+  font-weight: 800;
+}
+
+.att-page h3, .cr-page h3, .am-page h3, .ap-page h3, .ma-page h3, .ua-page h3, .nra-page h3, .ae-page h3, .aa-page h3, .al-page h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .att-page p,
@@ -117,32 +468,41 @@
 .am-page p,
 .am-page span,
 .am-page label,
+.am-page a,
 .ap-page p,
 .ap-page span,
 .ap-page label,
+.ap-page a,
 .ma-page p,
 .ma-page span,
 .ma-page label,
+.ma-page a,
 .ua-page p,
 .ua-page span,
 .ua-page label,
+.ua-page a,
 .nra-page p,
 .nra-page span,
 .nra-page label,
+.nra-page a,
 .ae-page p,
 .ae-page span,
 .ae-page label,
+.ae-page a,
 .aa-page p,
 .aa-page span,
 .aa-page label,
+.aa-page a,
 .al-page p,
 .al-page span,
-.al-page label {
-  color: var(--ui-text-secondary) !important;
+.al-page label,
+.al-page a {
+  color: var(--text-secondary) !important;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
 /* ─────────────────────────────────────────────────────────────────
-   FLOATING SIDEBARS
+   FLOATING SIDEBARS - MODERN DESIGN (Cream/Beige with rounded corners)
    ───────────────────────────────────────────────────────────────── */
 .att-sidebar,
 .cr-sidebar,
@@ -163,14 +523,24 @@
   border-radius: 20px !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
-  background:
-    linear-gradient(160deg, rgba(245, 234, 214, 0.82) 0%, rgba(255, 249, 240, 0.74) 52%, rgba(255, 255, 255, 0.9) 100%),
-    var(--ui-bg-card) !important;
-  border: 1px solid var(--ui-border) !important;
+  background: linear-gradient(160deg, rgba(245, 234, 214, 0.82) 0%, rgba(255, 249, 240, 0.74) 52%, rgba(255, 255, 255, 0.9) 100%), rgba(255, 255, 255, 0.96) !important;
+  border: 1px solid var(--border-light) !important;
   backdrop-filter: blur(8px);
-  box-shadow: var(--ui-shadow-xl) !important;
+  box-shadow: var(--shadow-xl);
   z-index: 220 !important;
   transform: translateX(0) !important;
+  animation: sidebarSlideIn 0.4s ease-out forwards;
+}
+
+@keyframes sidebarSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .att-sidebar--open,
@@ -216,8 +586,8 @@
   align-items: center;
   gap: 12px;
   padding: 22px 18px 18px;
-  border-bottom: 1px solid rgba(214, 193, 160, 0.38);
-  color: #1a1a2e;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
 }
 
 .att-sidebar__logo > span,
@@ -236,7 +606,7 @@
   font-weight: 800;
   line-height: 1.1;
   gap: 3px;
-  color: var(--ui-text-primary);
+  color: var(--ui-text-primary) !important;
 }
 
 .att-sidebar__logo > span::after,
@@ -251,7 +621,7 @@
 .al-sidebar__logo > span::after {
   content: "Attorney Console";
   font-size: 0.71rem;
-  color: var(--ui-text-muted);
+  color: var(--ui-text-muted) !important;
   letter-spacing: 0.08em;
   font-weight: 600;
 }
@@ -269,8 +639,11 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  border: 1px solid rgba(21, 34, 56, 0.15);
-  box-shadow: var(--ui-shadow-md);
+  border: 1px solid rgba(15,28,46,0.06) !important;
+  background: transparent !important;
+  box-shadow: 0 8px 20px rgba(15,28,46,0.06) !important;
+  object-fit: cover;
+  -webkit-mask-image: none !important;
 }
 
 .att-sidebar__logo svg,
@@ -371,47 +744,420 @@
   padding: 12px 14px !important;
   font-size: 0.9rem !important;
   font-weight: 600 !important;
-  color: #1a1a2e !important;
+  color: var(--text-secondary) !important;
   background: transparent !important;
-  border: 1px solid transparent;
-  border-radius: 12px;
+  border: none !important;
+  border-left: 3px solid transparent !important;
+  border-radius: 12px !important;
   box-sizing: border-box;
   flex-shrink: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   cursor: pointer;
-  transition: all var(--ui-transition-normal);
+  transition: all var(--transition-fast);
   appearance: none;
   outline: none;
   -webkit-tap-highlight-color: transparent;
+  padding-left: 14px !important;
+}
+/* Improved hover/active states for sidebar items to ensure contrast */
+.att-sidebar__item:hover,
+.cr-sidebar__item:hover,
+.am-sidebar__item:hover,
+.ap-sidebar__item:hover,
+.ma-sidebar__item:hover,
+.ua-sidebar__item:hover,
+.nra-sidebar__item:hover,
+.ae-sidebar__item:hover,
+.aa-sidebar__item:hover,
+.al-sidebar__item:hover {
+  background: rgba(21, 34, 56, 0.08) !important;
+  color: var(--text-primary) !important;
+  transform: translateX(2px);
 }
 
-.ua-sidebar__item:hover {
-  background: linear-gradient(140deg, rgba(212, 175, 55, 0.12), rgba(139, 69, 19, 0.06));
+.att-sidebar__item--active,
+.cr-sidebar__item--active,
+.am-sidebar__item--active,
+.ap-sidebar__item--active,
+.ma-sidebar__item--active,
+.ua-sidebar__item--active,
+.nra-sidebar__item--active,
+.ae-sidebar__item--active,
+.aa-sidebar__item--active,
+.al-sidebar__item--active {
+  background: rgba(21, 34, 56, 0.12) !important;
+  color: var(--text-primary) !important;
+  font-weight: 700 !important;
+  border-left: 3px solid var(--accent-primary) !important;
+}
+
+.att-sidebar__item-icon,
+.cr-sidebar__item-icon,
+.am-sidebar__item-icon,
+.ap-sidebar__item-icon,
+.ma-sidebar__item-icon,
+.ua-sidebar__item-icon,
+.nra-sidebar__item-icon,
+.ae-sidebar__item-icon,
+.aa-sidebar__item-icon,
+.al-sidebar__item-icon {
+  color: var(--text-secondary) !important;
+  transition: color var(--transition-fast);
+}
+
+.att-sidebar__item:hover .att-sidebar__item-icon,
+.cr-sidebar__item:hover .cr-sidebar__item-icon,
+.am-sidebar__item:hover .am-sidebar__item-icon,
+.ap-sidebar__item:hover .ap-sidebar__item-icon,
+.ma-sidebar__item:hover .ma-sidebar__item-icon,
+.ua-sidebar__item:hover .ua-sidebar__item-icon,
+.nra-sidebar__item:hover .nra-sidebar__item-icon,
+.ae-sidebar__item:hover .ae-sidebar__item-icon,
+.aa-sidebar__item:hover .aa-sidebar__item-icon,
+.al-sidebar__item:hover .al-sidebar__item-icon {
+  color: var(--text-primary) !important;
+}
+
+/* -----------------------
+   Strong global overrides
+   - Force readable sidebar contrast
+   - Normalize topbar text color on light backgrounds
+   - Ensure buttons have visible text on all pages
+   ----------------------- */
+
+/* Force sidebar text and items to stay dark on the light sidebar background */
+.att-sidebar, .cr-sidebar, .am-sidebar, .ap-sidebar, .ma-sidebar, .ua-sidebar, .nra-sidebar, .ae-sidebar, .aa-sidebar, .al-sidebar {
+  color: var(--text-primary) !important;
+}
+
+.att-sidebar__nav .att-sidebar__item,
+.cr-sidebar__nav .cr-sidebar__item,
+.am-sidebar__nav .am-sidebar__item,
+.ap-sidebar__nav .ap-sidebar__item,
+.ma-sidebar__nav .ma-sidebar__item,
+.ua-sidebar__nav .ua-sidebar__item,
+.nra-sidebar__nav .nra-sidebar__item,
+.ae-sidebar__nav .ae-sidebar__item,
+.aa-sidebar__nav .aa-sidebar__item,
+.al-sidebar__nav .al-sidebar__item {
+  color: var(--text-primary) !important;
+  background: transparent !important;
+}
+
+.att-sidebar__item--active,
+.cr-sidebar__item--active,
+.am-sidebar__item--active,
+.ap-sidebar__item--active,
+.ma-sidebar__item--active,
+.ua-sidebar__item--active,
+.nra-sidebar__item--active,
+.ae-sidebar__item--active,
+.aa-sidebar__item--active,
+.al-sidebar__item--active {
+  color: var(--text-primary) !important;
+  border-left-color: var(--ui-accent) !important;
+}
+
+/* Topbar: ensure text on topbars (light/beige) stays dark for contrast */
+.att-topbar, .cr-topbar, .am-topbar, .ap-topbar, .ma-topbar, .ua-topbar, .nra-topbar, .ae-topbar, .aa-topbar, .al-topbar {
+  color: var(--ui-text-primary) !important;
+}
+.att-topbar__logo, .cr-topbar__logo, .am-topbar__logo, .ap-topbar__logo, .ma-topbar__logo, .ua-topbar__logo, .nra-topbar__logo, .ae-topbar__logo, .aa-topbar__logo, .al-topbar__logo {
+  color: var(--ui-text-primary) !important;
+}
+
+/* Buttons: ensure readable text regardless of page-level overrides */
+button, input[type="button"], input[type="submit"], .btn, [class*="-btn"] {
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+}
+
+/* Make sure dark CTA buttons keep light text and light CTAs keep dark text */
+[class*="--primary"], .att-manage-btn, .att-enter-room-btn, .att-view-all, .cr-enter-btn, .cr-action-btn, .nra-btn--accept, .nra-btn, .ma-save-btn, .ap-btn--save, .al-view-btn {
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%) !important;
+}
+
+[class*="--neutral"], .btn-secondary, .btn-beige, .ap-btn--neutral, .ma-cancel-btn, .ap-btn--cancel, .ua-modal__btn--cancel {
+  color: var(--text-primary) !important;
+  background: linear-gradient(135deg, #ECE6DE 0%, #F5F1EB 100%) !important;
+}
+
+/* Fix topbar menu buttons (icons) to be visible on both light topbar and dark sidebar */
+.att-menu-btn, .aa-menu-btn, .am-menu-btn, .ap-menu-btn, .cr-menu-btn, .ma-menu-btn, .ua-menu-btn, .nra-menu-btn, .ae-menu-btn, .al-menu-btn {
+  color: var(--navy-dark) !important;
+  background: transparent !important;
+}
+
+/* Small accessibility tweak: ensure focus outlines are visible */
+button:focus, a:focus, input:focus, textarea:focus {
+  outline: 3px solid rgba(200,169,106,0.18) !important;
+  outline-offset: 2px !important;
+}
+
+/* Modal & Session Summary improvements: backdrop blur, elegant card, visible CTA text */
+/* Apply to common modal classes used in attorney pages */
+.al-modal-overlay,
+.cr-modal-overlay,
+.nra-modal-overlay,
+.ua-modal-overlay,
+.am-modal-overlay,
+.ap-modal-overlay,
+.ma-modal-overlay {
+  background: rgba(15,28,46,0.28) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+  padding: 20px !important;
+}
+
+.al-modal,
+.cr-modal,
+.nra-modal,
+.ua-modal,
+.am-modal,
+.ap-modal,
+.ma-modal {
+  width: min(92vw, 720px) !important;
+  max-height: 86vh !important;
+  overflow: hidden !important;
+  border-radius: 14px !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FBF8F4 100%) !important;
+  border: 1px solid rgba(200,169,106,0.12) !important;
+  box-shadow: 0 30px 60px rgba(15, 28, 46, 0.14) !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.al-modal__header,
+.cr-modal__header,
+.nra-modal__header,
+.ua-modal__header,
+.am-modal__header,
+.ap-modal__header,
+.ma-modal__header {
+  padding: 14px 18px !important;
+  border-bottom: 1px solid rgba(200,169,106,0.06) !important;
+  background: linear-gradient(180deg, rgba(250,245,240,0.6), rgba(245,241,236,0.6)) !important;
+  color: var(--ui-text-primary) !important;
+}
+
+/* Ensure modal close and action buttons are readable */
+.al-close-btn,
+.cr-modal-btn--cancel,
+.cr-modal-btn--confirm,
+.nra-modal__btn,
+.ua-modal__btn,
+.ap-btn--cancel,
+.ap-btn--save,
+.al-summary-save-btn {
+  font-weight: 700 !important;
+  border-radius: 10px !important;
+}
+
+/* Force dark CTAs to have light text and remove accidental opacity */
+.al-summary-save-btn,
+.att-manage-btn,
+.att-enter-room-btn,
+.att-view-all,
+.cr-enter-btn,
+.cr-action-btn,
+.nra-btn--accept,
+.nra-btn,
+.ma-save-btn,
+.ap-btn--save,
+.al-view-btn {
+  color: var(--cream-light) !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* Ensure secondary (light) buttons use dark text */
+.btn-secondary,
+.btn-beige,
+.ap-btn--neutral,
+.ma-cancel-btn,
+.cr-modal-btn--cancel {
+  color: var(--navy-dark) !important;
+}
+
+/* Improve visual weight for modal action area */
+.al-summary-panel__actions,
+.cr-modal__actions,
+.nra-modal__actions,
+.ua-modal__actions {
+  padding: 12px 18px !important;
+  display: flex !important;
+  gap: 12px !important;
+  justify-content: flex-end !important;
+  background: linear-gradient(180deg, rgba(250,245,240,0.4), rgba(250,245,240,0.2)) !important;
+}
+
+/* Make small CTA buttons in lists visible */
+.al-view-btn,
+.al-summary-save-btn {
+  min-width: 110px !important;
+  text-align: center !important;
+}
+
+/* If any page-level rule hides button text via color inheritance, force the icon/text inside to be visible */
+.al-view-btn *,
+.att-manage-btn *,
+.al-summary-save-btn * {
+  color: inherit !important;
+}
+
+
+.ua-sidebar__item:hover,
+.att-sidebar__item:hover,
+.cr-sidebar__item:hover,
+.am-sidebar__item:hover,
+.ap-sidebar__item:hover,
+.ma-sidebar__item:hover,
+.nra-sidebar__item:hover,
+.ae-sidebar__item:hover,
+.aa-sidebar__item:hover,
+.al-sidebar__item:hover {
+  background: linear-gradient(90deg, rgba(14, 165, 233, 0.1), rgba(139, 92, 246, 0.05));
+  color: var(--primary-600) !important;
   transform: translateX(4px);
 }
 
-.ua-sidebar__item--active {
-  background: linear-gradient(140deg, rgba(212, 175, 55, 0.25), rgba(139, 69, 19, 0.15)) !important;
-  border-left: 3px solid #d4af37;
-  color: #8b6914 !important;
-  font-weight: 700;
+.ua-sidebar__item--active,
+.att-sidebar__item--active,
+.cr-sidebar__item--active,
+.am-sidebar__item--active,
+.ap-sidebar__item--active,
+.ma-sidebar__item--active,
+.nra-sidebar__item--active,
+.ae-sidebar__item--active,
+.aa-sidebar__item--active,
+.al-sidebar__item--active {
+  background: linear-gradient(90deg, rgba(14, 165, 233, 0.15), rgba(139, 92, 246, 0.1)) !important;
+  border-left: 3px solid var(--primary-600) !important;
+  color: var(--primary-700) !important;
+  font-weight: 700 !important;
+  padding-left: 11px !important;
+  box-shadow: inset 0 0 0 1px rgba(14, 165, 233, 0.2);
 }
 
-.ua-sidebar__item--active .ua-sidebar__item-icon {
-  color: #8b6914 !important;
+.ua-sidebar__item--active .ua-sidebar__item-icon,
+.att-sidebar__item--active .att-sidebar__item-icon,
+.cr-sidebar__item--active .cr-sidebar__item-icon,
+.am-sidebar__item--active .am-sidebar__item-icon,
+.ap-sidebar__item--active .ap-sidebar__item-icon,
+.ma-sidebar__item--active .ma-sidebar__item-icon,
+.nra-sidebar__item--active .nra-sidebar__item-icon,
+.ae-sidebar__item--active .ae-sidebar__item-icon,
+.aa-sidebar__item--active .aa-sidebar__item-icon,
+.al-sidebar__item--active .al-sidebar__item-icon {
+  color: var(--primary-600) !important;
 }
 
-.ua-sidebar__item-icon {
+.ua-sidebar__item-icon,
+.att-sidebar__item-icon,
+.cr-sidebar__item-icon,
+.am-sidebar__item-icon,
+.ap-sidebar__item-icon,
+.ma-sidebar__item-icon,
+.nra-sidebar__item-icon,
+.ae-sidebar__item-icon,
+.aa-sidebar__item-icon,
+.al-sidebar__item-icon {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  color: #1a1a2e !important;
+  color: var(--text-secondary) !important;
+  transition: color var(--transition-fast), transform var(--transition-normal);
 }
 
-.ua-sidebar__item:hover .ua-sidebar__item-icon {
+.ua-sidebar__item:hover .ua-sidebar__item-icon,
+.att-sidebar__item:hover .att-sidebar__item-icon,
+.cr-sidebar__item:hover .cr-sidebar__item-icon,
+.am-sidebar__item:hover .am-sidebar__item-icon,
+.ap-sidebar__item:hover .ap-sidebar__item-icon,
+.ma-sidebar__item:hover .ma-sidebar__item-icon,
+.nra-sidebar__item:hover .nra-sidebar__item-icon,
+.ae-sidebar__item:hover .ae-sidebar__item-icon,
+.aa-sidebar__item:hover .aa-sidebar__item-icon,
+.al-sidebar__item:hover .al-sidebar__item-icon {
+  color: var(--primary-600) !important;
+  transform: scale(1.1);
+}
+
+.ua-sidebar__item:hover,
+.att-sidebar__item:hover,
+.cr-sidebar__item:hover,
+.am-sidebar__item:hover,
+.ap-sidebar__item:hover,
+.ma-sidebar__item:hover,
+.nra-sidebar__item:hover,
+.ae-sidebar__item:hover,
+.aa-sidebar__item:hover,
+.al-sidebar__item:hover {
+  background: linear-gradient(140deg, rgba(212, 175, 55, 0.12), rgba(139, 69, 19, 0.06));
+  color: #2d3748 !important;
+}
+
+.ua-sidebar__item--active,
+.att-sidebar__item--active,
+.cr-sidebar__item--active,
+.am-sidebar__item--active,
+.ap-sidebar__item--active,
+.ma-sidebar__item--active,
+.nra-sidebar__item--active,
+.ae-sidebar__item--active,
+.aa-sidebar__item--active,
+.al-sidebar__item--active {
+  background: linear-gradient(140deg, rgba(212, 175, 55, 0.25), rgba(139, 69, 19, 0.15)) !important;
+  border-left: 3px solid #d4af37 !important;
   color: #8b6914 !important;
+  font-weight: 700;
+  padding-left: 11px !important;
+}
+
+.ua-sidebar__item--active .ua-sidebar__item-icon,
+.att-sidebar__item--active .att-sidebar__item-icon,
+.cr-sidebar__item--active .cr-sidebar__item-icon,
+.am-sidebar__item--active .am-sidebar__item-icon,
+.ap-sidebar__item--active .ap-sidebar__item-icon,
+.ma-sidebar__item--active .ma-sidebar__item-icon,
+.nra-sidebar__item--active .nra-sidebar__item-icon,
+.ae-sidebar__item--active .ae-sidebar__item-icon,
+.aa-sidebar__item--active .aa-sidebar__item-icon,
+.al-sidebar__item--active .al-sidebar__item-icon {
+  color: #8b6914 !important;
+}
+
+.ua-sidebar__item-icon,
+.att-sidebar__item-icon,
+.cr-sidebar__item-icon,
+.am-sidebar__item-icon,
+.ap-sidebar__item-icon,
+.ma-sidebar__item-icon,
+.nra-sidebar__item-icon,
+.ae-sidebar__item-icon,
+.aa-sidebar__item-icon,
+.al-sidebar__item-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: #4b5563 !important;
+}
+
+.ua-sidebar__item:hover .ua-sidebar__item-icon,
+.att-sidebar__item:hover .att-sidebar__item-icon,
+.cr-sidebar__item:hover .cr-sidebar__item-icon,
+.am-sidebar__item:hover .am-sidebar__item-icon,
+.ap-sidebar__item:hover .ap-sidebar__item-icon,
+.ma-sidebar__item:hover .ma-sidebar__item-icon,
+.nra-sidebar__item:hover .nra-sidebar__item-icon,
+.ae-sidebar__item:hover .ae-sidebar__item-icon,
+.aa-sidebar__item:hover .aa-sidebar__item-icon,
+.al-sidebar__item:hover .al-sidebar__item-icon {
+  color: #2d3748 !important;
 }
 
 /* Force dark text on sidebar items in all pages */
@@ -474,7 +1220,7 @@
 .ae-sidebar__item--active,
 .aa-sidebar__item--active,
 .al-sidebar__item--active {
-  color: #ffffff !important;
+  color: var(--text-primary) !important;
   background: linear-gradient(135deg, var(--ui-accent) 0%, var(--ui-accent-hover) 100%) !important;
   border-color: rgba(21, 34, 56, 0.18);
 }
@@ -493,7 +1239,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────
-   HIDE ALL TOPBARS
+   SHOW & STYLE ALL TOPBARS - unified cream-first header
    ───────────────────────────────────────────────────────────────── */
 .att-topbar,
 .cr-topbar,
@@ -505,7 +1251,19 @@
 .ae-topbar,
 .aa-topbar,
 .al-topbar {
-  display: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 72px !important;
+  padding: 0 26px !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100 !important;
+  background: linear-gradient(180deg, var(--cream-primary) 0%, var(--cream-beige) 100%) !important;
+  color: var(--ui-text-primary) !important;
+  box-shadow: 0 4px 12px rgba(15, 28, 46, 0.06) !important;
+  border-bottom: 1px solid var(--ui-border) !important;
+  backdrop-filter: blur(6px) !important;
 }
 
 /* ─────────────────────────────────────────────────────────────────
@@ -529,6 +1287,68 @@
   border: 0 !important;
   box-shadow: none !important;
 }
+
+/* ─────────────────────────────────────────────────────────────────
+   OVERRIDES: Sidebar text contrast and hover/active styling
+   Ensures readable text on navy sidebars and cohesive beige-first UI
+   ───────────────────────────────────────────────────────────────── */
+.att-sidebar__item,
+.cr-sidebar__item,
+.am-sidebar__item,
+.ap-sidebar__item,
+.ma-sidebar__item,
+.ua-sidebar__item,
+.nra-sidebar__item,
+.ae-sidebar__item,
+.aa-sidebar__item,
+.al-sidebar__item {
+  color: var(--text-primary) !important;
+}
+
+.att-sidebar__item:hover,
+.cr-sidebar__item:hover,
+.am-sidebar__item:hover,
+.ap-sidebar__item:hover,
+.ma-sidebar__item:hover,
+.ua-sidebar__item:hover,
+.nra-sidebar__item:hover,
+.ae-sidebar__item:hover,
+.aa-sidebar__item:hover,
+.al-sidebar__item:hover {
+  background: rgba(21, 34, 56, 0.08) !important;
+  color: var(--text-primary) !important;
+  transform: none !important;
+}
+
+.att-sidebar__item--active,
+.cr-sidebar__item--active,
+.am-sidebar__item--active,
+.ap-sidebar__item--active,
+.ma-sidebar__item--active,
+.ua-sidebar__item--active,
+.nra-sidebar__item--active,
+.ae-sidebar__item--active,
+.aa-sidebar__item--active,
+.al-sidebar__item--active {
+  background: rgba(21, 34, 56, 0.12) !important;
+  border-left: 3px solid var(--accent-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Force icons to be light gray on navy */
+.att-sidebar__item-icon,
+.cr-sidebar__item-icon,
+.am-sidebar__item-icon,
+.ap-sidebar__item-icon,
+.ma-sidebar__item-icon,
+.ua-sidebar__item-icon,
+.nra-sidebar__item-icon,
+.ae-sidebar__item-icon,
+.aa-sidebar__item-icon,
+.al-sidebar__item-icon {
+  color: var(--text-primary) !important;
+}
+
 
 /* ─────────────────────────────────────────────────────────────────
    CARD STYLING
@@ -575,6 +1395,100 @@
     linear-gradient(125deg, rgba(255, 255, 255, 0.96), rgba(245, 241, 235, 0.94)),
     linear-gradient(135deg, rgba(236, 230, 222, 0.9), rgba(245, 241, 235, 0.96)) !important;
 }
+
+/* ─────────────────────────────────────────────────────────────────
+   FINAL POLISH: remove stray thin lines, add glass effects and stronger button contrast
+   These broad overrides ensure no thin boxes appear around text, enforce glass cards,
+   and guarantee button text visibility across attorney pages without touching backend.
+   ───────────────────────────────────────────────────────────────── */
+
+/* Soften or remove thin lines used as decoration across pages */
+.att-page * { /* keep minimal impact but reduce intrusive borders */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide small decorative separators and thin boxes used in layouts */
+.att-page hr, .att-page .page-separator, .att-page .thin-line, .att-page .box-line {
+  display: none !important;
+}
+
+/* Make form-like labels and simple display rows appear as clean text (no boxed look) */
+.att-page .field-row, .att-page .detail-row, .att-page .display-row, .att-page .value-box {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Brand text containers should be clean and not boxed */
+.att-brand-text-wrap, .ap-profile-card__info, .att-welcome .welcome-body, .att-welcome .welcome-meta {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Glass card helpers - apply to main cards for elegant effect */
+.att-page .glass-card, .att-welcome, .cr-card, .att-stat-card, .att-queue-card, .am-chat-container {
+  background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(250,245,240,0.85)) !important;
+  border: 1px solid rgba(15,28,46,0.06) !important;
+  box-shadow: 0 12px 40px rgba(15,28,46,0.07) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+/* Ensure logo images don't show dark fallback rectangles and are fully visible */
+.att-sidebar__logo img, .att-topbar__brand-logo, .att-brand-logo {
+  background: transparent !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(15,28,46,0.05) !important;
+  box-shadow: 0 6px 18px rgba(15,28,46,0.06) !important;
+}
+
+/* Strong, readable button system */
+button, .btn, .btn--primary, .btn--neutral, input[type="button"], input[type="submit"], .att-manage-btn, .cr-action-btn, .cr-enter-btn, .am-video-call-btn, .am-end-session-btn {
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  min-height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Primary CTAs: dark navy gradient with white text */
+.btn--primary, .att-manage-btn, .cr-enter-btn, .al-summary-save-btn, .am-video-call-btn {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%) !important;
+  border: none !important;
+  box-shadow: 0 12px 30px rgba(21,34,56,0.14) !important;
+}
+
+/* Secondary CTAs: light glass with dark text */
+.btn--neutral, .btn--secondary, .btn-beige, .am-attach-btn, .att-profile-button {
+  color: var(--text-primary) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,241,236,0.98)) !important;
+  border: 1px solid rgba(15,28,46,0.06) !important;
+}
+
+/* Ensure button text is never clipped and has enough padding */
+button, .btn { white-space: nowrap !important; }
+
+/* Hover/active micro-interactions */
+button:hover, .btn:hover { transform: translateY(-3px); transition: transform 180ms ease, box-shadow 180ms ease; }
+button:active, .btn:active { transform: translateY(0); }
+
+/* Make icons in buttons and nav visible */
+.att-sidebar__item-icon, .cr-sidebar__item-icon, .am-sidebar__item-icon { color: var(--text-primary) !important; }
+
+/* Accessibility: ensure contrast on small text inside buttons */
+.btn small, button small { color: rgba(255,255,255,0.9) !important; }
+
+/* Tidy up chips: remove boxed input look around badges */
+.att-hero-chip, .chip { border: none !important; box-shadow: 0 6px 18px rgba(15,28,46,0.05); }
+
+/* Ensure modal/backdrop remain visible but elegant */
+.al-modal-overlay, .cr-modal-overlay, .am-confirm-overlay { background: rgba(15,28,46,0.18) !important; }
+
 
 /* ─────────────────────────────────────────────────────────────────
    TEXT STYLING IN CARDS & ELEMENTS
@@ -631,6 +1545,39 @@
 .att-welcome h1,
 .ap-topbar__logo span,
 .cr-topbar__title h1,
+/* Global button and small UI polish */
+.btn, button, input[type="button"], input[type="submit"], .btn--primary, .att-manage-btn, .cr-action-btn, .cr-enter-btn {
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-fast);
+  will-change: transform;
+}
+
+button, .btn {
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,241,236,0.98));
+  border: 1px solid rgba(15,28,46,0.06);
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+.btn--primary, .att-manage-btn, .cr-enter-btn, .al-summary-save-btn {
+  color: #fff !important;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%) !important;
+  border: none !important;
+  box-shadow: 0 10px 28px rgba(21,34,56,0.14);
+}
+
+.btn--primary:hover, .att-manage-btn:hover, .cr-enter-btn:hover, .al-summary-save-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 48px rgba(21,34,56,0.16);
+}
+
+/* Remove stray full-width separators outside text blocks */
+.page-separator, hr.page-line, .page-outline { display: none !important; }
+
+/* Subtle entrance animations for main cards */
+@keyframes floatUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.att-welcome, .cr-card, .att-stat-card, .att-queue-card, .ua-summary { animation: floatUp 0.45s cubic-bezier(.2,.8,.2,1) both; }
 .am-topbar__logo span,
 .ma-topbar__logo span,
 .ua-topbar__logo span,
@@ -642,7 +1589,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────
-   BUTTONS & INTERACTIVE ELEMENTS
+   BUTTONS & INTERACTIVE ELEMENTS (Beige-first layout with navy CTAs)
    ───────────────────────────────────────────────────────────────── */
 .att-manage-btn,
 .att-enter-room-btn,
@@ -659,13 +1606,19 @@
 .am-input-bar__send,
 .am-attach-btn,
 .ae-page-btn,
-.al-view-btn {
-  background: linear-gradient(135deg, var(--ui-accent) 0%, var(--ui-accent-hover) 100%) !important;
-  color: #f8f9fa !important;
-  border: 1px solid rgba(21, 34, 56, 0.16) !important;
-  border-radius: 8px !important;
-  box-shadow: 0 10px 24px rgba(21, 34, 56, 0.14) !important;
-  font-weight: 600;
+.al-view-btn,
+.am-video-call-btn,
+.am-end-session-btn,
+.cr-modal-btn--blue,
+.cr-modal-btn--confirm,
+.al-summary-save-btn {
+  /* primary CTA: navy gradient with cream text for contrast */
+  background: linear-gradient(135deg, var(--navy-muted) 0%, var(--navy-dark) 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 10px 24px rgba(15, 28, 46, 0.12) !important;
+  font-weight: 700;
   padding: 10px 18px;
   cursor: pointer;
   transition: all var(--ui-transition-normal);
@@ -686,9 +1639,52 @@
 .am-input-bar__send:hover,
 .am-attach-btn:hover,
 .ae-page-btn:hover,
-.al-view-btn:hover {
+.al-view-btn:hover,
+.am-video-call-btn:hover,
+.am-end-session-btn:hover,
+.cr-modal-btn--blue:hover,
+.cr-modal-btn--confirm:hover,
+.al-summary-save-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(21, 34, 56, 0.18) !important;
+  box-shadow: 0 14px 30px rgba(15, 28, 46, 0.16) !important;
+  /* subtle gold outline on hover */
+  outline: 2px solid rgba(200, 169, 106, 0.12) !important;
+}
+
+/* Secondary / neutral buttons (beige) */
+.btn-secondary,
+.btn-beige,
+.ap-btn--neutral,
+.ma-cancel-btn {
+  background: linear-gradient(135deg, var(--cream-primary) 0%, var(--cream-beige) 100%) !important;
+  color: var(--navy-dark) !important;
+  border: 1px solid var(--ui-border) !important;
+  box-shadow: 0 6px 16px rgba(15, 28, 46, 0.06) !important;
+}
+
+/* Force all dark / navy buttons to keep white text even if a page rule tries to inherit dark text */
+.att-page .att-manage-btn,
+.att-page .att-enter-room-btn,
+.att-page .att-view-all,
+.att-page .cr-enter-btn,
+.att-page .cr-action-btn,
+.att-page .nra-btn--accept,
+.att-page .nra-btn,
+.att-page .ma-save-btn,
+.att-page .ma-add-slot,
+.att-page .ap-edit-btn,
+.att-page .ap-btn--save,
+.att-page .ua-summary__refresh,
+.att-page .am-input-bar__send,
+.att-page .am-video-call-btn,
+.att-page .am-end-session-btn,
+.att-page .am-attach-btn,
+.att-page .ae-page-btn,
+.att-page .al-view-btn,
+.att-page .cr-modal-btn--blue,
+.att-page .cr-modal-btn--confirm,
+.att-page .al-summary-save-btn {
+  color: #ffffff !important;
 }
 
 .ap-signout-btn,
@@ -1138,8 +2134,8 @@ hr,
   background: none !important;
 }
 
-/* Fallback: make any non-outline/ghost buttons show white text for contrast */
-.att-page button:not(.btn-outline):not(.btn-secondary):not(.btn-outline-dark):not(.lp-btn-ghost):not(.lp-btn-outline):not(.lp-btn-outline-dark) {
+/* Fallback: make any non-outline/ghost buttons show white text for contrast, but keep sidebar items dark */
+.att-page button:not(.btn-outline):not(.btn-secondary):not(.btn-outline-dark):not(.lp-btn-ghost):not(.lp-btn-outline):not(.lp-btn-outline-dark):not(.att-sidebar__item):not(.cr-sidebar__item):not(.am-sidebar__item):not(.ap-sidebar__item):not(.ma-sidebar__item):not(.ua-sidebar__item):not(.nra-sidebar__item):not(.ae-sidebar__item):not(.aa-sidebar__item):not(.al-sidebar__item) {
   color: #ffffff !important;
 }
 
@@ -1274,6 +2270,8 @@ hr,
   border: 1px solid var(--ui-border) !important;
   color: var(--ui-text-primary) !important;
   box-shadow: var(--ui-shadow-lg) !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
 }
 
 .att-spotlight-head,
@@ -1529,8 +2527,6 @@ button,
 .ap-edit-btn,
 .ap-btn--save,
 .ua-summary__refresh,
-.am-input-bar__send,
-.am-attach-btn,
 .ae-page-btn,
 .al-view-btn,
 .att-icon-btn,
@@ -1546,6 +2542,14 @@ button,
   color: inherit !important;
   visibility: visible !important;
   opacity: 1 !important;
+}
+
+.ap-btn--save {
+  color: #ffffff !important;
+}
+
+.ap-edit-btn {
+  color: #ffffff !important;
 }
 
 /* Override light text on light backgrounds */
@@ -1678,9 +2682,147 @@ select,
   color: var(--ui-text-muted) !important;
 }
 
+.ap-page .ap-edit-hero h2 {
+  color: #ffffff !important;
+}
+
 input::placeholder,
 textarea::placeholder,
 .input::placeholder,
 .textarea::placeholder {
   color: var(--ui-text-muted) !important;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   MODERN ANIMATIONS & EFFECTS
+   ───────────────────────────────────────────────────────────────── */
+@keyframes sidebarSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+button, [type="button"], [type="submit"], a.btn, .btn {
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover:not(:disabled),
+[type="button"]:hover:not(:disabled),
+[type="submit"]:hover:not(:disabled),
+a.btn:hover,
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+button:active,
+[type="button"]:active,
+[type="submit"]:active,
+a.btn:active,
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Glassmorphism effect */
+.att-page [class*="card"],
+.cr-page [class*="card"],
+.am-page [class*="card"],
+.ap-page [class*="card"],
+.ma-page [class*="card"],
+.ua-page [class*="card"],
+.nra-page [class*="card"],
+.ae-page [class*="card"],
+.aa-page [class*="card"],
+.al-page [class*="card"] {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-normal);
+}
+
+/* Table and list animations */
+.att-page tbody tr,
+.cr-page tbody tr,
+.am-page tbody tr,
+.ap-page tbody tr,
+.ma-page tbody tr,
+.ua-page tbody tr,
+.nra-page tbody tr,
+.ae-page tbody tr,
+.aa-page tbody tr,
+.al-page tbody tr {
+  animation: fadeInUp 0.3s ease-out forwards;
+  transition: all var(--transition-fast);
+}
+
+.att-page tbody tr:hover,
+.cr-page tbody tr:hover,
+.am-page tbody tr:hover,
+.ap-page tbody tr:hover,
+.ma-page tbody tr:hover,
+.ua-page tbody tr:hover,
+.nra-page tbody tr:hover,
+.ae-page tbody tr:hover,
+.aa-page tbody tr:hover,
+.al-page tbody tr:hover {
+  background: linear-gradient(90deg, rgba(14, 165, 233, 0.05), rgba(139, 92, 246, 0.05));
+  transform: translateX(2px);
 }

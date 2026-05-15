@@ -140,8 +140,8 @@ function AttorneyHome({ onNavigate, profile }) {
   }, [profile?.id]);
 
   const stats = [
-    { label: 'My Appointments', value: String(statsData.myAppointmentCount), icon: <CalendarCheckIcon />, bg: '#eff6ff', border: '#3b82f6', nav: 'upcoming-appointments' },
-    { label: 'Analytics', value: 'View Graph', icon: <AnalyticsIcon />, bg: '#ecfdf5', border: '#10b981', nav: 'attorney-analytics' },
+    { label: 'My Appointments', value: String(statsData.myAppointmentCount), icon: <CalendarCheckIcon />, bg: 'linear-gradient(135deg, rgba(245,241,236,1), rgba(255,255,255,0.98))', border: 'rgba(15,28,46,0.06)', nav: 'upcoming-appointments' },
+    { label: 'Analytics', value: 'View Graph', icon: <AnalyticsIcon />, bg: 'linear-gradient(135deg, rgba(245,241,236,1), rgba(255,255,255,0.98))', border: 'rgba(15,28,46,0.06)', nav: 'attorney-analytics' },
   ];
 
   const sortedConsultations = [...consultations].sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -272,13 +272,38 @@ function AttorneyHome({ onNavigate, profile }) {
       {/* Content */}
       <main className="att-main">
         <section className="att-hero-grid">
-          <div className="att-welcome">
-            <div className="att-welcome__text">
+          <div className="att-welcome" style={{ position: 'relative', overflow: 'hidden' }}>
+            <img 
+              src="/lady-justice/lady-justice.jpg" 
+              alt="" 
+              style={{
+                position: 'absolute',
+                right: 0,
+                top: 0,
+                height: '100%',
+                width: 'auto',
+                maxWidth: '50%',
+                objectFit: 'cover',
+                opacity: 0.7,
+                zIndex: 0
+              }} 
+            />
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              height: '100%',
+              width: '100%',
+              background: 'linear-gradient(to right, rgba(245, 241, 235, 0.95), rgba(245, 241, 235, 0.5))',
+              zIndex: 1,
+              pointerEvents: 'none'
+            }}></div>
+            <div className="att-welcome__text" style={{ position: 'relative', zIndex: 2 }}>
               <p className="att-kicker">LEGAL OPERATIONS OVERVIEW</p>
               <h1>Welcome back, {profile?.full_name || 'Attorney'}</h1>
               <p>Monitor consultations, respond faster, and keep your schedule aligned in one focused dashboard.</p>
             </div>
-            <div className="att-hero-chips">
+            <div className="att-hero-chips" style={{ position: 'relative', zIndex: 2 }}>
               <span className="att-hero-chip">{upcomingCount} upcoming consultations</span>
               <span className="att-hero-chip">{unreadCount} unread notifications</span>
             </div>

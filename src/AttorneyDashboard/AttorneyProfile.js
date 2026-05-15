@@ -240,7 +240,7 @@ export default function AttorneyProfile({ onNavigate, profile: sessionProfile, o
           </div>
         </div>
 
-        <div className="ap-details-card">
+        <div className={`ap-details-card ${editing ? 'ap-details-card--editing' : ''}`}>
           {!editing ? (
             <>
               <h2>Attorney Information</h2>
@@ -263,19 +263,47 @@ export default function AttorneyProfile({ onNavigate, profile: sessionProfile, o
             </>
           ) : (
             <>
-              <h2>Edit Profile</h2>
-              <div className="ap-form-grid">
-                <label className="ap-field"><span>Full Name</span><input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} /></label>
-                <label className="ap-field"><span>Firm/Title</span><input value={form.role} onChange={e => setForm({ ...form, role: e.target.value })} /></label>
-                <label className="ap-field"><span>Email</span><input type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} /></label>
-                <label className="ap-field"><span>Phone</span><input value={form.phone} onChange={e => setForm({ ...form, phone: sanitizePhoneInput(e.target.value) })} /></label>
-                <label className="ap-field"><span>Location</span><input value={form.location} onChange={e => setForm({ ...form, location: e.target.value })} /></label>
-                <label className="ap-field"><span>IBP Number</span><input value={form.ibpNumber} onChange={e => setForm({ ...form, ibpNumber: e.target.value })} /></label>
-                <label className="ap-field ap-field--full"><span>Bio</span><textarea rows="4" value={form.bio} onChange={e => setForm({ ...form, bio: e.target.value })} /></label>
+              <div className="ap-edit-hero">
+                <div>
+                  <p className="ap-edit-kicker">Profile Studio</p>
+                  <h2>Edit Profile</h2>
+                  <p className="ap-edit-copy">Update your attorney details with a cleaner layout, stronger focus, and softer glass surfaces.</p>
+                </div>
+                <div className="ap-edit-badge">Live preview enabled</div>
               </div>
-              <div className="ap-form-actions">
-                <button className="ap-btn ap-btn--cancel" onClick={() => { setForm(profile); setEditing(false); }}>Cancel</button>
-                <button className="ap-btn ap-btn--save" onClick={handleSave}>Save Changes</button>
+              <div className="ap-edit-layout">
+                <aside className="ap-edit-preview">
+                  <div className="ap-edit-preview__avatar">{getInitials(form.name)}</div>
+                  <div className="ap-edit-preview__name">{form.name || 'Attorney Name'}</div>
+                  <div className="ap-edit-preview__role">{form.role || 'Firm / Title'}</div>
+                  <div className="ap-edit-preview__stats">
+                    <div><span>{profile.consultations}</span><label>Consultations</label></div>
+                    <div><span>{profile.notarials}</span><label>Notarials</label></div>
+                    <div><span>{profile.rating}</span><label>Rating</label></div>
+                  </div>
+                  <div className="ap-edit-preview__note">
+                    Keep the profile concise, polished, and easy for clients to trust at a glance.
+                  </div>
+                </aside>
+                <section className="ap-edit-panel">
+                  <div className="ap-edit-panel__title">
+                    <h3>Profile Details</h3>
+                    <span>Fields update the attorney console immediately after save.</span>
+                  </div>
+                  <div className="ap-form-grid">
+                    <label className="ap-field"><span>Full Name</span><input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} /></label>
+                    <label className="ap-field"><span>Firm/Title</span><input value={form.role} onChange={e => setForm({ ...form, role: e.target.value })} /></label>
+                    <label className="ap-field"><span>Email</span><input type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} /></label>
+                    <label className="ap-field"><span>Phone</span><input value={form.phone} onChange={e => setForm({ ...form, phone: sanitizePhoneInput(e.target.value) })} /></label>
+                    <label className="ap-field"><span>Location</span><input value={form.location} onChange={e => setForm({ ...form, location: e.target.value })} /></label>
+                    <label className="ap-field"><span>IBP Number</span><input value={form.ibpNumber} onChange={e => setForm({ ...form, ibpNumber: e.target.value })} /></label>
+                    <label className="ap-field ap-field--full"><span>Bio</span><textarea rows="5" value={form.bio} onChange={e => setForm({ ...form, bio: e.target.value })} /></label>
+                  </div>
+                  <div className="ap-form-actions">
+                    <button className="ap-btn ap-btn--cancel" onClick={() => { setForm(profile); setEditing(false); }}>Cancel</button>
+                    <button className="ap-btn ap-btn--save" onClick={handleSave}>Save Changes</button>
+                  </div>
+                </section>
               </div>
             </>
           )}

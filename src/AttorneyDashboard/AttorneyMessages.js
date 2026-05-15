@@ -780,10 +780,7 @@ export default function AttorneyMessages({ onNavigate, profile, initialAppointme
           <button className="am-menu-btn" onClick={() => setSidebarOpen(!sidebarOpen)}>
             <MenuIcon />
           </button>
-          <div className="am-topbar__logo">
-            <ScalesIcon size={26} color="#f5a623" />
-            <span>BatasMo</span>
-          </div>
+          <div className="am-topbar__logo" aria-label="Attorney messages header"></div>
         </div>
         <div className="am-topbar__right">
           <div className="am-topbar__user">
